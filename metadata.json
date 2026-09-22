@@ -1,0 +1,6 @@
+{
+  "name": "An Toàn Sân Đỗ",
+  "description": "Ứng dụng ôn tập an toàn sân đỗ với 72 câu hỏi trắc nghiệm, Flashcard 3D và mẹo ghi nhớ nhanh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

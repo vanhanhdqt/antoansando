@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #faf9f4;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #297a2e;
+  --accent-soft: rgba(41, 122, 46, 0.14);
+  --accent2: #d97706;
+  --accent2-soft: rgba(217, 119, 6, 0.14);
+  --border: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --card: #111c2e;
+  --text: #e8eef7;
+  --muted: #94a3b8;
+  --accent: #4ade80;
+  --accent-soft: rgba(74, 222, 128, 0.14);
+  --accent2: #fbbf24;
+  --accent2-soft: rgba(251, 191, 36, 0.14);
+  --border: rgba(148, 163, 184, 0.16);
+}
+
+* {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--card);
+  color: var(--text);
+  border: 2px solid var(--border);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(41, 122, 46, 0.15);
+}
+
+.option-btn.selected {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.option-btn.correct {
+  background: rgba(13, 150, 105, 0.12);
+  border-color: #0d9669;
+  color: #065f46;
+}
+
+.option-btn.incorrect {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: #dc2626;
+  color: #991b1b;
+}
+
+.option-btn:disabled {
+  cursor: not-allowed;
+}
+
+.grid-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.grid-btn:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.grid-btn.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.grid-btn.answered {
+  background: rgba(41, 122, 46, 0.08);
+  border-color: var(--accent);
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flash-wrap {
+  perspective: 1400px;
+  max-width: 640px;
+  margin: 0 auto;
+  height: 380px;
+}
+
+.flash-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  cursor: pointer;
+}
+
+.flash-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flash-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid var(--border);
+  background: var(--card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.flash-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, var(--accent-soft), var(--card));
+  border-color: var(--accent);
+}
+
